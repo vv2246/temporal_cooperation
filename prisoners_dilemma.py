@@ -89,12 +89,12 @@ plt.rcParams.update({'font.size': 60})#, "font.family":"helvetica"})
 #     for phase in [0,2]:
 T = 500     #number of timesteps
 step = 1    #to plot every step'th step 
-p_coops = [0.,1]    #probabilities to ccooperate
-phase = 2   #phase shift. If one agen'ts pahse =0, and anothers = 2, they are out-of-phase, becauuse the period is 4
+p_coops = [0.5,0.5]    #probabilities to ccooperate
+phase = 0  #phase shift. If one agen'ts pahse =0, and anothers = 2, they are out-of-phase, becauuse the period is 4
 agents = [Agent(idx=0,p_coop= p_coops[0],T= T, modulate= True,timescale= 0.25,phase= 0) ,
           Agent(idx =1,p_coop= p_coops[1],T= T, modulate=True,timescale = 0.25,phase =phase, amplitude=0.2)]
 
-colors = {0: "teal",  1 : "orange"}
+colors = {0: "teal",  1 : "orange"} #colors associated with agent 0 and agent  1
 
 ######## 
 #  Graph   
@@ -161,7 +161,8 @@ ax[1].plot(time,agents[0].p_coop,color=colors[0])
 ax[1].plot(time,agents[1].p_coop,color=colors[1])
 colors2 =   ["r", "orange", "purple", "green"]
 
-if phase == 0 and p_coops[0] ==0.5:
+if phase == 2 and p_coops[0] ==0.5:
+    
     idx_mid = np.where(abs(agents[0].p_coop - agents[1].p_coop) <0.03)[0]
     idx_mid= idx_mid[np.where(~(np.diff(idx_mid[:-1])<3))] #get rid of multples
     idx_max0 = np.where(((max(agents[0].p_coop ) - agents[0].p_coop) < 0.01)) #where agent0 prob maxes out
@@ -171,17 +172,38 @@ if phase == 0 and p_coops[0] ==0.5:
         np.std(np.array(agents[0].payoff)[idx_mid] + np.array(agents[1].payoff)[idx_mid]),capsize=10,c=colors2[0],markersize=50,marker='s',markerfacecolor= "none")
 
     ax[0].set_xticks(np.linspace(1,3,3))
+    ax[1].scatter(time[idx_mid],agents[0].p_coop[idx_mid], edgecolors=colors2[0],s=300, facecolors="none",marker="^")
+    ax[1].scatter(time[idx_mid],agents[1].p_coop[idx_mid], edgecolors=colors2[0],s=300, facecolors="none",marker="^")
+
+
+
+elif phase == 0 and p_coops[0] ==0.5:
+    idx_mid = np.where(abs(agents[0].p_coop - agents[1].p_coop) <0.01)[0]
+    idx_max0 = np.where(((max(agents[0].p_coop ) - agents[0].p_coop) < 0.01)) #where agent0 prob maxes out
+    idx_max1 = np.where(abs(min(agents[1].p_coop ) - agents[1].p_coop) < 0.01)#where agent1 prob maxes out
+    
+    ax[0].errorbar( 3, np.mean(np.array(agents[0].payoff)[idx_mid] + np.array(agents[1].payoff)[idx_mid]),
+        np.std(np.array(agents[0].payoff)[idx_mid] + np.array(agents[1].payoff)[idx_mid]),capsize=10,c=colors2[0],markersize=50,marker='s',markerfacecolor= "none")
+
+    ax[0].set_xticks(np.linspace(1,3,3))
+    ax[1].scatter(time[idx_mid],agents[0].p_coop[idx_mid], edgecolors=colors2[0],s=300, facecolors="none",marker="^")
+    ax[1].scatter(time[idx_mid],agents[1].p_coop[idx_mid], edgecolors=colors2[0],s=300, facecolors="none",marker="^")
+
+
+elif phase == 0 and p_coops[0] ==0 :# or p_coops[1]==0):
+    print("iim here1" )
+    idx_max0 = np.where(((max(agents[0].p_coop ) - agents[0].p_coop) < 0.01)) #where agent0 prob maxes out
+    idx_max1 = np.where((abs(min(agents[1].p_coop ) - agents[1].p_coop)) < 0.01)
+    ax[0].set_xlim(0,2.5)#ticks(np.linspace(1,2,2))
+
 elif phase == 2 and p_coops[0] ==0 :# or p_coops[1]==0):
+    print("iim here")
     idx_max0 = np.where(((max(agents[0].p_coop ) - agents[0].p_coop) < 0.01)) #where agent0 prob maxes out
     idx_max1 = np.where(((max(agents[1].p_coop ) - agents[1].p_coop) < 0.01))
     m1 = int(max(np.diff(idx_max1)[0]))
-    idx_max1 =idx_max1[0][int(m1/2):][::m1]# np.where(np.diff(idx_max1[0])>1)[0] + m1
-    # idx_max1 =np.int64(np.floor(np.where(np.diff(idx_max1[0]) >1)[0] + max(np.diff(idx_max1[0]))/2))
-    # idx_max1 = idx_max1[0]
+    idx_max1 =idx_max1[0][int(m1/2):][::m1]
     ax[0].set_xlim(0,2.5)#ticks(np.linspace(1,2,2))
 
-ax[1].scatter(time[idx_mid],agents[0].p_coop[idx_mid], edgecolors=colors2[0],s=300, facecolors="none",marker="^")
-ax[1].scatter(time[idx_mid],agents[1].p_coop[idx_mid], edgecolors=colors2[0],s=300, facecolors="none",marker="^")
 ax[1].scatter(time[idx_max0],agents[1].p_coop[idx_max0], edgecolors=colors2[1],s=300, facecolors="none",marker="o")
 ax[1].scatter(time[idx_max0],agents[0].p_coop[idx_max0], edgecolors=colors2[1],s=300, facecolors="none", marker="o")
 ax[1].scatter(time[idx_max1],agents[1].p_coop[idx_max1], edgecolors=colors2[2],s=300, facecolors="none",marker="s")
