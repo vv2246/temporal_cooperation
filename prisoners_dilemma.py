@@ -49,7 +49,7 @@ class Agent():
         '''
         r = np.random.rand()
         ### 1 means cooperating
-        if self.p_coop[t] > r:
+        if self.p_coop[t] >= r:
             res = 1
         else: res = 0
         self.history.append(res)
