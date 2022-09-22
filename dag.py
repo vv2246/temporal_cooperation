@@ -26,6 +26,12 @@ G.add_edge("norms_enforcement", "cooperation")
 G.add_edge("willingness_punish", "cooperation")
 G.add_edge("oxytocin","norms_enforcement")
 G.add_edge("oxytocin","willingness_punish")
+G.add_edge("neural_activity","oxytocin")
+
+
+G.add_edge("circadian_clock","endocryne_system")
+G.add_edge("endocryne_system", "neural_activity")
+ 
 
 G.add_edge("circadian_clock","network_structure")
 
@@ -35,7 +41,7 @@ G["mentalizing_network"]["network_structure"][0]["name"] = "egocentric"
 
 G.add_edge("neural_activity","network_structure")
 
-G["neural_activity"]["network_structure"][0]["name"] = "centrality"
+# G["neural_activity"]["network_structure"][0]["name"] = "centrality"
 
 G.add_edge("cognitive_abilities","network_structure")
 G["cognitive_abilities"]["network_structure"][0]["name"]  = "memory"

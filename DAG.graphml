@@ -16,7 +16,7 @@
   <key attr.name="network_zoom" attr.type="double" for="graph" id="d13"/>
   <key attr.description="internal attribute for legend data" attr.name="Network_Edge_Templates" attr.type="string" for="graph" id="d14"/>
   <key for="graphml" id="d15" yfiles.type="resources"/>
-  <graph edgedefault="directed" id="G" parse.edges="17" parse.nodes="13" parse.order="free">
+  <graph edgedefault="directed" id="G" parse.edges="20" parse.nodes="14" parse.order="free">
     <node id="n0">
       <data key="d0">1</data>
       <data key="d1">network_structure</data>
@@ -24,8 +24,8 @@
       <data key="d3">
         <visone:shapeNode>
           <y:ShapeNode>
-            <y:Geometry height="30.0" width="30.0" x="643.4887265782777" y="476.69200774052103"/>
-            <y:Fill color="#FFCCCC" transparent="false"/>
+            <y:Geometry height="30.0" width="30.0" x="282.03600251098334" y="353.5209258269444"/>
+            <y:Fill color="#FF9999" transparent="false"/>
             <y:BorderStyle color="#333333" type="line" width="1.0"/>
             <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="27.5546875" modelName="internal" modelPosition="c" textColor="#000000" visible="true" width="176.0" x="-73.0" y="1.22265625">network_structure</y:NodeLabel>
             <y:Shape type="ellipse"/>
@@ -40,10 +40,10 @@
       <data key="d3">
         <visone:shapeNode>
           <y:ShapeNode>
-            <y:Geometry height="30.0" width="30.0" x="339.48393348712125" y="387.5356775402394"/>
-            <y:Fill color="#FFCCCC" transparent="false"/>
+            <y:Geometry height="30.0" width="30.0" x="551.5804710726579" y="485.5349148348052"/>
+            <y:Fill color="#FF9999" transparent="false"/>
             <y:BorderStyle color="#333333" type="line" width="1.0"/>
-            <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="27.5546875" modelName="internal" modelPosition="c" textColor="#000000" visible="true" width="118.0" x="-44.0" y="1.22265625">cooperation</y:NodeLabel>
+            <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="27.5546875" modelName="internal" modelPosition="c" textColor="#000000" visible="true" width="118.0" x="-44.0" y="1.2226562500000568">cooperation</y:NodeLabel>
             <y:Shape type="ellipse"/>
           </y:ShapeNode>
         </visone:shapeNode>
@@ -56,8 +56,8 @@
       <data key="d3">
         <visone:shapeNode>
           <y:ShapeNode>
-            <y:Geometry height="30.0" width="30.0" x="66.66666666666666" y="575.3993636463781"/>
-            <y:Fill color="#FFCCCC" transparent="false"/>
+            <y:Geometry height="30.0" width="30.0" x="905.3023737605308" y="420.8747980524598"/>
+            <y:Fill color="#FF9999" transparent="false"/>
             <y:BorderStyle color="#333333" type="line" width="1.0"/>
             <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="27.5546875" modelName="internal" modelPosition="c" textColor="#000000" visible="true" width="190.0" x="-80.0" y="1.22265625">higherorder_games</y:NodeLabel>
             <y:Shape type="ellipse"/>
@@ -72,8 +72,8 @@
       <data key="d3">
         <visone:shapeNode>
           <y:ShapeNode>
-            <y:Geometry height="30.0" width="30.0" x="263.0052391031739" y="539.5194107357441"/>
-            <y:Fill color="#FFCCCC" transparent="false"/>
+            <y:Geometry height="30.0" width="30.0" x="783.2078562787897" y="542.1312728815035"/>
+            <y:Fill color="#FF9999" transparent="false"/>
             <y:BorderStyle color="#333333" type="line" width="1.0"/>
             <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="27.5546875" modelName="internal" modelPosition="c" textColor="#000000" visible="true" width="241.0" x="-105.5" y="1.22265625">nondominant_strategists</y:NodeLabel>
             <y:Shape type="ellipse"/>
@@ -88,8 +88,8 @@
       <data key="d3">
         <visone:shapeNode>
           <y:ShapeNode>
-            <y:Geometry height="30.0" width="30.0" x="150.48354480492952" y="423.38653761131985"/>
-            <y:Fill color="#FFCCCC" transparent="false"/>
+            <y:Geometry height="30.0" width="30.0" x="710.6063511124701" y="372.9010087994562"/>
+            <y:Fill color="#FF9999" transparent="false"/>
             <y:BorderStyle color="#333333" type="line" width="1.0"/>
             <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="27.5546875" modelName="internal" modelPosition="c" textColor="#000000" visible="true" width="177.0" x="-73.5" y="1.22265625">strategic_diversity</y:NodeLabel>
             <y:Shape type="ellipse"/>
@@ -104,8 +104,8 @@
       <data key="d3">
         <visone:shapeNode>
           <y:ShapeNode>
-            <y:Geometry height="30.0" width="30.0" x="305.7442212390142" y="222.60366790651761"/>
-            <y:Fill color="#FFCCCC" transparent="false"/>
+            <y:Geometry height="30.0" width="30.0" x="440.45861123550793" y="605.2329519681064"/>
+            <y:Fill color="#FF9999" transparent="false"/>
             <y:BorderStyle color="#333333" type="line" width="1.0"/>
             <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="27.5546875" modelName="internal" modelPosition="c" textColor="#000000" visible="true" width="195.0" x="-82.5" y="1.22265625">norms_enforcement</y:NodeLabel>
             <y:Shape type="ellipse"/>
@@ -120,8 +120,8 @@
       <data key="d3">
         <visone:shapeNode>
           <y:ShapeNode>
-            <y:Geometry height="30.0" width="30.0" x="518.8494417750096" y="229.37738550966463"/>
-            <y:Fill color="#FFCCCC" transparent="false"/>
+            <y:Geometry height="30.0" width="30.0" x="615.7150505438015" y="653.407644317658"/>
+            <y:Fill color="#FF9999" transparent="false"/>
             <y:BorderStyle color="#333333" type="line" width="1.0"/>
             <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="27.5546875" modelName="internal" modelPosition="c" textColor="#000000" visible="true" width="185.0" x="-77.5" y="1.22265625">willingness_punish</y:NodeLabel>
             <y:Shape type="ellipse"/>
@@ -136,8 +136,8 @@
       <data key="d3">
         <visone:shapeNode>
           <y:ShapeNode>
-            <y:Geometry height="30.0" width="30.0" x="425.68808358589075" y="104.0"/>
-            <y:Fill color="#FFCCCC" transparent="false"/>
+            <y:Geometry height="30.0" width="30.0" x="460.49273709264355" y="747.6881693163602"/>
+            <y:Fill color="#FF9999" transparent="false"/>
             <y:BorderStyle color="#333333" type="line" width="1.0"/>
             <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="27.5546875" modelName="internal" modelPosition="c" textColor="#000000" visible="true" width="85.0" x="-27.5" y="1.22265625">oxytocin</y:NodeLabel>
             <y:Shape type="ellipse"/>
@@ -147,61 +147,13 @@
     </node>
     <node id="n8">
       <data key="d0">9</data>
-      <data key="d1">circadian_clock</data>
+      <data key="d1">neural_activity</data>
       <data key="d2">9</data>
       <data key="d3">
         <visone:shapeNode>
           <y:ShapeNode>
-            <y:Geometry height="30.0" width="30.0" x="811.0604507180301" y="401.91695849876197"/>
-            <y:Fill color="#FFCCCC" transparent="false"/>
-            <y:BorderStyle color="#333333" type="line" width="1.0"/>
-            <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="27.5546875" modelName="internal" modelPosition="c" textColor="#000000" visible="true" width="151.0" x="-60.5" y="1.22265625">circadian_clock</y:NodeLabel>
-            <y:Shape type="ellipse"/>
-          </y:ShapeNode>
-        </visone:shapeNode>
-      </data>
-    </node>
-    <node id="n9">
-      <data key="d0">10</data>
-      <data key="d1">exclusion</data>
-      <data key="d2">10</data>
-      <data key="d3">
-        <visone:shapeNode>
-          <y:ShapeNode>
-            <y:Geometry height="30.0" width="30.0" x="516.9254644108813" y="778.8826202423554"/>
-            <y:Fill color="#FFCCCC" transparent="false"/>
-            <y:BorderStyle color="#333333" type="line" width="1.0"/>
-            <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="27.5546875" modelName="internal" modelPosition="c" textColor="#000000" visible="true" width="95.0" x="-32.5" y="1.22265625">exclusion</y:NodeLabel>
-            <y:Shape type="ellipse"/>
-          </y:ShapeNode>
-        </visone:shapeNode>
-      </data>
-    </node>
-    <node id="n10">
-      <data key="d0">11</data>
-      <data key="d1">mentalizing_network</data>
-      <data key="d2">11</data>
-      <data key="d3">
-        <visone:shapeNode>
-          <y:ShapeNode>
-            <y:Geometry height="30.0" width="30.0" x="648.7381064079801" y="670.8992608351621"/>
-            <y:Fill color="#FFCCCC" transparent="false"/>
-            <y:BorderStyle color="#333333" type="line" width="1.0"/>
-            <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="27.5546875" modelName="internal" modelPosition="c" textColor="#000000" visible="true" width="204.0" x="-87.0" y="1.22265625">mentalizing_network</y:NodeLabel>
-            <y:Shape type="ellipse"/>
-          </y:ShapeNode>
-        </visone:shapeNode>
-      </data>
-    </node>
-    <node id="n11">
-      <data key="d0">12</data>
-      <data key="d1">neural_activity</data>
-      <data key="d2">12</data>
-      <data key="d3">
-        <visone:shapeNode>
-          <y:ShapeNode>
-            <y:Geometry height="30.0" width="30.0" x="698.8459401485015" y="276.1224241751487"/>
-            <y:Fill color="#FFCCCC" transparent="false"/>
+            <y:Geometry height="30.0" width="30.0" x="210.61947059096792" y="609.2870388393447"/>
+            <y:Fill color="#FF9999" transparent="false"/>
             <y:BorderStyle color="#333333" type="line" width="1.0"/>
             <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="27.5546875" modelName="internal" modelPosition="c" textColor="#000000" visible="true" width="141.0" x="-55.5" y="1.22265625">neural_activity</y:NodeLabel>
             <y:Shape type="ellipse"/>
@@ -209,15 +161,79 @@
         </visone:shapeNode>
       </data>
     </node>
+    <node id="n9">
+      <data key="d0">10</data>
+      <data key="d1">circadian_clock</data>
+      <data key="d2">10</data>
+      <data key="d3">
+        <visone:shapeNode>
+          <y:ShapeNode>
+            <y:Geometry height="30.0" width="30.0" x="90.78921076256518" y="429.8710969785054"/>
+            <y:Fill color="#FF9999" transparent="false"/>
+            <y:BorderStyle color="#333333" type="line" width="1.0"/>
+            <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="27.5546875" modelName="internal" modelPosition="c" textColor="#000000" visible="true" width="151.0" x="-60.5" y="1.22265625">circadian_clock</y:NodeLabel>
+            <y:Shape type="ellipse"/>
+          </y:ShapeNode>
+        </visone:shapeNode>
+      </data>
+    </node>
+    <node id="n10">
+      <data key="d0">11</data>
+      <data key="d1">endocryne_system</data>
+      <data key="d2">11</data>
+      <data key="d3">
+        <visone:shapeNode>
+          <y:ShapeNode>
+            <y:Geometry height="30.0" width="30.0" x="34.0" y="562.3800085355316"/>
+            <y:Fill color="#FF9999" transparent="false"/>
+            <y:BorderStyle color="#333333" type="line" width="1.0"/>
+            <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="27.5546875" modelName="internal" modelPosition="c" textColor="#000000" visible="true" width="180.0" x="-75.0" y="1.22265625">endocryne_system</y:NodeLabel>
+            <y:Shape type="ellipse"/>
+          </y:ShapeNode>
+        </visone:shapeNode>
+      </data>
+    </node>
+    <node id="n11">
+      <data key="d0">12</data>
+      <data key="d1">exclusion</data>
+      <data key="d2">12</data>
+      <data key="d3">
+        <visone:shapeNode>
+          <y:ShapeNode>
+            <y:Geometry height="30.0" width="30.0" x="-28.469068294683666" y="144.66666666666669"/>
+            <y:Fill color="#FF9999" transparent="false"/>
+            <y:BorderStyle color="#333333" type="line" width="1.0"/>
+            <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="27.5546875" modelName="internal" modelPosition="c" textColor="#000000" visible="true" width="95.0" x="-32.5" y="1.22265625">exclusion</y:NodeLabel>
+            <y:Shape type="ellipse"/>
+          </y:ShapeNode>
+        </visone:shapeNode>
+      </data>
+    </node>
     <node id="n12">
       <data key="d0">13</data>
-      <data key="d1">cognitive_abilities</data>
+      <data key="d1">mentalizing_network</data>
       <data key="d2">13</data>
       <data key="d3">
         <visone:shapeNode>
           <y:ShapeNode>
-            <y:Geometry height="30.0" width="30.0" x="782.556921358769" y="584.0535686350665"/>
-            <y:Fill color="#FFCCCC" transparent="false"/>
+            <y:Geometry height="30.0" width="30.0" x="116.41378606607182" y="243.99158141977404"/>
+            <y:Fill color="#FF9999" transparent="false"/>
+            <y:BorderStyle color="#333333" type="line" width="1.0"/>
+            <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="27.5546875" modelName="internal" modelPosition="c" textColor="#000000" visible="true" width="204.0" x="-87.0" y="1.22265625">mentalizing_network</y:NodeLabel>
+            <y:Shape type="ellipse"/>
+          </y:ShapeNode>
+        </visone:shapeNode>
+      </data>
+    </node>
+    <node id="n13">
+      <data key="d0">14</data>
+      <data key="d1">cognitive_abilities</data>
+      <data key="d2">14</data>
+      <data key="d3">
+        <visone:shapeNode>
+          <y:ShapeNode>
+            <y:Geometry height="30.0" width="30.0" x="372.1048890550764" y="152.90283794182352"/>
+            <y:Fill color="#FF9999" transparent="false"/>
             <y:BorderStyle color="#333333" type="line" width="1.0"/>
             <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="27.5546875" modelName="internal" modelPosition="c" textColor="#000000" visible="true" width="176.0" x="-73.0" y="1.22265625">cognitive_abilities</y:NodeLabel>
             <y:Shape type="ellipse"/>
@@ -234,12 +250,12 @@
       <data key="d9">
         <visone:bezierEdge>
           <y:BezierEdge>
-            <y:Path sx="-2.5988686636858116" sy="7.566100823337734" tx="-2.5988686636858116" ty="7.566100823337734">
-              <y:Point x="429.68169148763025" y="549.43115234375"/>
+            <y:Path sx="3.231195279048885" sy="-7.318427226436852" tx="3.231195279048885" ty="-7.318427226436852">
+              <y:Point x="522.7959245954241" y="361.158216203962"/>
             </y:Path>
-            <y:LineStyle color="#B4B4B4" type="line" width="3.0"/>
+            <y:LineStyle color="#CCCCCC" type="line" width="3.0"/>
             <y:Arrows source="none" target="StandardArrow"/>
-            <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" modelName="six_pos" modelPosition="head" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="58.0" x="-143.84362397485847" y="-1.055796173249064">proximity</y:EdgeLabel>
+            <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" modelName="six_pos" modelPosition="head" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="58.0" x="82.83600749851621" y="-20.195473342991875">proximity</y:EdgeLabel>
           </y:BezierEdge>
           <visone:edgeRealizerData>
             <visone:line style="continuous" width="3.0"/>
@@ -256,12 +272,12 @@
       <data key="d9">
         <visone:bezierEdge>
           <y:BezierEdge>
-            <y:Path sx="-0.8662895545619373" sy="2.5220336077792447" tx="-0.8662895545619373" ty="2.5220336077792447">
-              <y:Point x="463.0809631347656" y="516.3870849609375"/>
+            <y:Path sx="1.077065093016295" sy="-2.4394757421456177" tx="1.077065093016295" ty="-2.4394757421456177">
+              <y:Point x="473.48553030831476" y="424.42108154296875"/>
             </y:Path>
-            <y:LineStyle color="#B4B4B4" type="line" width="3.0"/>
+            <y:LineStyle color="#CCCCCC" type="line" width="3.0"/>
             <y:Arrows source="none" target="StandardArrow"/>
-            <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" modelName="six_pos" modelPosition="head" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="52.0" x="-121.34131481144709" y="-12.178683427124838">dynamic</y:EdgeLabel>
+            <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" modelName="six_pos" modelPosition="head" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="52.0" x="59.47396221043027" y="-0.4364813420745577">dynamic</y:EdgeLabel>
           </y:BezierEdge>
           <visone:edgeRealizerData>
             <visone:line style="continuous" width="3.0"/>
@@ -278,12 +294,12 @@
       <data key="d9">
         <visone:bezierEdge>
           <y:BezierEdge>
-            <y:Path sx="0.866289554561937" sy="-2.522033607779244" tx="0.866289554561937" ty="-2.522033607779244">
-              <y:Point x="503.4802042643229" y="396.0096842447917"/>
+            <y:Path sx="-1.0770650930162948" sy="2.439475742145617" tx="-1.0770650930162948" ty="2.439475742145617">
+              <y:Point x="437.64835030691967" y="494.4205845424108"/>
             </y:Path>
-            <y:LineStyle color="#B4B4B4" type="line" width="3.0"/>
+            <y:LineStyle color="#CCCCCC" type="line" width="3.0"/>
             <y:Arrows source="none" target="StandardArrow"/>
-            <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" modelName="six_pos" modelPosition="head" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="72.0" x="-167.34996145517152" y="-55.83441508469434">higherorder</y:EdgeLabel>
+            <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" modelName="six_pos" modelPosition="head" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="72.0" x="-11.700349565569582" y="54.329641903427614">higherorder</y:EdgeLabel>
           </y:BezierEdge>
           <visone:edgeRealizerData>
             <visone:line style="continuous" width="3.0"/>
@@ -300,12 +316,12 @@
       <data key="d9">
         <visone:bezierEdge>
           <y:BezierEdge>
-            <y:Path sx="2.5988686636858116" sy="-7.566100823337734" tx="2.5988686636858116" ty="-7.566100823337734">
-              <y:Point x="537.8794453938801" y="315.63225301106775"/>
+            <y:Path sx="-3.231195279048885" sy="7.318427226436852" tx="-3.231195279048885" ty="7.318427226436852">
+              <y:Point x="398.44289725167414" y="567.7883911132812"/>
             </y:Path>
-            <y:LineStyle color="#00CC33" type="line" width="3.0"/>
+            <y:LineStyle color="#CCCCCC" type="line" width="3.0"/>
             <y:Arrows source="none" target="StandardArrow"/>
-            <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" modelName="six_pos" modelPosition="head" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="56.0" x="-126.98000804025423" y="-94.41633031756498">centrality</y:EdgeLabel>
+            <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" modelName="six_pos" modelPosition="head" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="56.0" x="-10.246853744688622" y="87.68416896815972">centrality</y:EdgeLabel>
           </y:BezierEdge>
           <visone:edgeRealizerData>
             <visone:line style="continuous" width="3.0"/>
@@ -317,15 +333,15 @@
       <data key="d4">3</data>
       <data key="d5">true</data>
       <data key="d6">5</data>
-      <data key="d7"></data>
+      <data key="d7"/>
       <data key="d8">5</data>
       <data key="d9">
         <visone:polyLineEdge>
           <y:PolyLineEdge>
             <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-            <y:LineStyle color="#B4B4B4" type="line" width="3.0"/>
+            <y:LineStyle color="#CCCCCC" type="line" width="3.0"/>
             <y:Arrows source="none" target="StandardArrow"/>
-            <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="4.0" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="4.0" x="81.41365063882654" y="-12.877942016969655"></y:EdgeLabel>
+            <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="4.0" modelName="six_pos" modelPosition="head" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="4.0" x="-52.40418673815225" y="42.071939017012426"></y:EdgeLabel>
             <y:BendStyle smoothed="false"/>
           </y:PolyLineEdge>
           <visone:edgeRealizerData>
@@ -338,15 +354,15 @@
       <data key="d4">3</data>
       <data key="d5">true</data>
       <data key="d6">6</data>
-      <data key="d7"></data>
+      <data key="d7"/>
       <data key="d8">6</data>
       <data key="d9">
         <visone:polyLineEdge>
           <y:PolyLineEdge>
             <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-            <y:LineStyle color="#B4B4B4" type="line" width="3.0"/>
+            <y:LineStyle color="#CCCCCC" type="line" width="3.0"/>
             <y:Arrows source="none" target="StandardArrow"/>
-            <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="4.0" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="4.0" x="37.76850354960777" y="-64.87084331646349"></y:EdgeLabel>
+            <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="4.0" modelName="six_pos" modelPosition="head" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="4.0" x="-84.7836136377183" y="-26.89097543188501"></y:EdgeLabel>
             <y:BendStyle smoothed="false"/>
           </y:PolyLineEdge>
           <visone:edgeRealizerData>
@@ -359,15 +375,15 @@
       <data key="d4">3</data>
       <data key="d5">true</data>
       <data key="d6">7</data>
-      <data key="d7"></data>
+      <data key="d7"/>
       <data key="d8">7</data>
       <data key="d9">
         <visone:polyLineEdge>
           <y:PolyLineEdge>
             <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-            <y:LineStyle color="#B4B4B4" type="line" width="3.0"/>
+            <y:LineStyle color="#CCCCCC" type="line" width="3.0"/>
             <y:Arrows source="none" target="StandardArrow"/>
-            <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="4.0" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="4.0" x="34.503250910288386" y="-64.59269511982075"></y:EdgeLabel>
+            <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="4.0" modelName="six_pos" modelPosition="head" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="4.0" x="-103.24237196880745" y="-31.226452471927473"></y:EdgeLabel>
             <y:BendStyle smoothed="false"/>
           </y:PolyLineEdge>
           <visone:edgeRealizerData>
@@ -380,15 +396,15 @@
       <data key="d4">3</data>
       <data key="d5">true</data>
       <data key="d6">8</data>
-      <data key="d7"></data>
+      <data key="d7"/>
       <data key="d8">8</data>
       <data key="d9">
         <visone:polyLineEdge>
           <y:PolyLineEdge>
             <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-            <y:LineStyle color="#B4B4B4" type="line" width="3.0"/>
+            <y:LineStyle color="#CCCCCC" type="line" width="3.0"/>
             <y:Arrows source="none" target="StandardArrow"/>
-            <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="4.0" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="4.0" x="77.76297498586916" y="-12.750613994465937"></y:EdgeLabel>
+            <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="4.0" modelName="six_pos" modelPosition="head" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="4.0" x="-69.27225052852975" y="40.230612911674086"></y:EdgeLabel>
             <y:BendStyle smoothed="false"/>
           </y:PolyLineEdge>
           <visone:edgeRealizerData>
@@ -401,15 +417,15 @@
       <data key="d4">3</data>
       <data key="d5">true</data>
       <data key="d6">9</data>
-      <data key="d7"></data>
+      <data key="d7"/>
       <data key="d8">9</data>
       <data key="d9">
         <visone:polyLineEdge>
           <y:PolyLineEdge>
             <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-            <y:LineStyle color="#00CC33" type="line" width="3.0"/>
+            <y:LineStyle color="#CCCCCC" type="line" width="3.0"/>
             <y:Arrows source="none" target="StandardArrow"/>
-            <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="4.0" modelName="six_pos" modelPosition="head" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="4.0" x="7.454454283508596" y="65.77034105833945"></y:EdgeLabel>
+            <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="4.0" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="4.0" x="49.21215126211075" y="-50.855934762606694"></y:EdgeLabel>
             <y:BendStyle smoothed="false"/>
           </y:PolyLineEdge>
           <visone:edgeRealizerData>
@@ -422,15 +438,15 @@
       <data key="d4">3</data>
       <data key="d5">true</data>
       <data key="d6">10</data>
-      <data key="d7"></data>
+      <data key="d7"/>
       <data key="d8">10</data>
       <data key="d9">
         <visone:polyLineEdge>
           <y:PolyLineEdge>
             <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-            <y:LineStyle color="#00CC33" type="line" width="3.0"/>
+            <y:LineStyle color="#CCCCCC" type="line" width="3.0"/>
             <y:Arrows source="none" target="StandardArrow"/>
-            <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="4.0" modelName="six_pos" modelPosition="head" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="4.0" x="-80.43188414627832" y="61.395011912865186"></y:EdgeLabel>
+            <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="4.0" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="4.0" x="-23.949908821615736" y="-71.92416720111214"></y:EdgeLabel>
             <y:BendStyle smoothed="false"/>
           </y:PolyLineEdge>
           <visone:edgeRealizerData>
@@ -443,15 +459,15 @@
       <data key="d4">3</data>
       <data key="d5">true</data>
       <data key="d6">11</data>
-      <data key="d7"></data>
+      <data key="d7"/>
       <data key="d8">11</data>
       <data key="d9">
         <visone:polyLineEdge>
           <y:PolyLineEdge>
             <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-            <y:LineStyle color="#00CC33" type="line" width="3.0"/>
+            <y:LineStyle color="#CCCCCC" type="line" width="3.0"/>
             <y:Arrows source="none" target="StandardArrow"/>
-            <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="4.0" modelName="six_pos" modelPosition="head" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="4.0" x="-51.30591179653186" y="40.77733649909058"></y:EdgeLabel>
+            <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="4.0" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="4.0" x="-5.6468348054946205" y="-58.373789943704196"></y:EdgeLabel>
             <y:BendStyle smoothed="false"/>
           </y:PolyLineEdge>
           <visone:edgeRealizerData>
@@ -464,15 +480,15 @@
       <data key="d4">3</data>
       <data key="d5">true</data>
       <data key="d6">12</data>
-      <data key="d7"></data>
+      <data key="d7"/>
       <data key="d8">12</data>
       <data key="d9">
         <visone:polyLineEdge>
           <y:PolyLineEdge>
             <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-            <y:LineStyle color="#00CC33" type="line" width="3.0"/>
+            <y:LineStyle color="#CCCCCC" type="line" width="3.0"/>
             <y:Arrows source="none" target="StandardArrow"/>
-            <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="4.0" modelName="six_pos" modelPosition="head" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="4.0" x="30.1482376637922" y="48.648638433543255"></y:EdgeLabel>
+            <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="4.0" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="4.0" x="62.790752949081934" y="-36.13849669768615"></y:EdgeLabel>
             <y:BendStyle smoothed="false"/>
           </y:PolyLineEdge>
           <visone:edgeRealizerData>
@@ -481,19 +497,19 @@
         </visone:polyLineEdge>
       </data>
     </edge>
-    <edge id="e12" source="n8" target="n0">
+    <edge id="e12" source="n8" target="n7">
       <data key="d4">3</data>
       <data key="d5">true</data>
       <data key="d6">13</data>
-      <data key="d7"></data>
+      <data key="d7"/>
       <data key="d8">13</data>
       <data key="d9">
         <visone:polyLineEdge>
           <y:PolyLineEdge>
             <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-            <y:LineStyle color="#B4B4B4" type="line" width="3.0"/>
+            <y:LineStyle color="#CCCCCC" type="line" width="3.0"/>
             <y:Arrows source="none" target="StandardArrow"/>
-            <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="4.0" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="4.0" x="-72.08777707450236" y="34.167518430864504"></y:EdgeLabel>
+            <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="4.0" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="4.0" x="109.81498445704011" y="65.04044304762283"></y:EdgeLabel>
             <y:BendStyle smoothed="false"/>
           </y:PolyLineEdge>
           <visone:edgeRealizerData>
@@ -502,19 +518,19 @@
         </visone:polyLineEdge>
       </data>
     </edge>
-    <edge id="e13" source="n9" target="n10">
+    <edge id="e13" source="n8" target="n0">
       <data key="d4">3</data>
       <data key="d5">false</data>
       <data key="d6">14</data>
-      <data key="d7"></data>
+      <data key="d7"/>
       <data key="d8">14</data>
       <data key="d9">
         <visone:polyLineEdge>
           <y:PolyLineEdge>
             <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-            <y:LineStyle color="#B4B4B4" type="line" width="3.0"/>
+            <y:LineStyle color="#CCCCCC" type="line" width="3.0"/>
             <y:Arrows source="none" target="none"/>
-            <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="4.0" modelName="six_pos" modelPosition="head" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="4.0" x="52.30285474536822" y="-52.12432758495538"></y:EdgeLabel>
+            <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="4.0" modelName="six_pos" modelPosition="head" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="4.0" x="25.115735487634254" y="-115.43567831138671"></y:EdgeLabel>
             <y:BendStyle smoothed="false"/>
           </y:PolyLineEdge>
           <visone:edgeRealizerData>
@@ -523,40 +539,82 @@
         </visone:polyLineEdge>
       </data>
     </edge>
-    <edge id="e14" source="n10" target="n0">
+    <edge id="e14" source="n9" target="n10">
       <data key="d4">3</data>
-      <data key="d5">false</data>
+      <data key="d5">true</data>
       <data key="d6">15</data>
-      <data key="d7">egocentric</data>
+      <data key="d7"/>
       <data key="d8">15</data>
       <data key="d9">
         <visone:polyLineEdge>
           <y:PolyLineEdge>
             <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-            <y:LineStyle color="#B4B4B4" type="line" width="3.0"/>
-            <y:Arrows source="none" target="none"/>
-            <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" modelName="six_pos" modelPosition="head" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="63.0" x="-67.46447120376627" y="-91.17549608325226">egocentric</y:EdgeLabel>
+            <y:LineStyle color="#CCCCCC" type="line" width="3.0"/>
+            <y:Arrows source="none" target="StandardArrow"/>
+            <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="4.0" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="4.0" x="-19.62870402081957" y="50.46725807928419"></y:EdgeLabel>
             <y:BendStyle smoothed="false"/>
           </y:PolyLineEdge>
           <visone:edgeRealizerData>
-            <visone:line style="dashed" width="3.0"/>
+            <visone:line style="continuous" width="3.0"/>
           </visone:edgeRealizerData>
         </visone:polyLineEdge>
       </data>
     </edge>
-    <edge id="e15" source="n11" target="n0">
+    <edge id="e15" source="n9" target="n0">
       <data key="d4">3</data>
-      <data key="d5">false</data>
+      <data key="d5">true</data>
       <data key="d6">16</data>
-      <data key="d7">centrality</data>
+      <data key="d7"/>
       <data key="d8">16</data>
       <data key="d9">
         <visone:polyLineEdge>
           <y:PolyLineEdge>
             <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-            <y:LineStyle color="#B4B4B4" type="line" width="3.0"/>
+            <y:LineStyle color="#CCCCCC" type="line" width="3.0"/>
+            <y:Arrows source="none" target="StandardArrow"/>
+            <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="4.0" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="4.0" x="79.69251386333676" y="-29.815112353327777"></y:EdgeLabel>
+            <y:BendStyle smoothed="false"/>
+          </y:PolyLineEdge>
+          <visone:edgeRealizerData>
+            <visone:line style="continuous" width="3.0"/>
+          </visone:edgeRealizerData>
+        </visone:polyLineEdge>
+      </data>
+    </edge>
+    <edge id="e16" source="n10" target="n8">
+      <data key="d4">3</data>
+      <data key="d5">true</data>
+      <data key="d6">17</data>
+      <data key="d7"/>
+      <data key="d8">17</data>
+      <data key="d9">
+        <visone:polyLineEdge>
+          <y:PolyLineEdge>
+            <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+            <y:LineStyle color="#CCCCCC" type="line" width="3.0"/>
+            <y:Arrows source="none" target="StandardArrow"/>
+            <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="4.0" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="4.0" x="71.81230640144099" y="22.13440292690143"></y:EdgeLabel>
+            <y:BendStyle smoothed="false"/>
+          </y:PolyLineEdge>
+          <visone:edgeRealizerData>
+            <visone:line style="continuous" width="3.0"/>
+          </visone:edgeRealizerData>
+        </visone:polyLineEdge>
+      </data>
+    </edge>
+    <edge id="e17" source="n11" target="n12">
+      <data key="d4">3</data>
+      <data key="d5">false</data>
+      <data key="d6">18</data>
+      <data key="d7"/>
+      <data key="d8">18</data>
+      <data key="d9">
+        <visone:polyLineEdge>
+          <y:PolyLineEdge>
+            <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+            <y:LineStyle color="#CCCCCC" type="line" width="3.0"/>
             <y:Arrows source="none" target="none"/>
-            <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" modelName="six_pos" modelPosition="head" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="56.0" x="-84.19015872033651" y="76.75902259845986">centrality</y:EdgeLabel>
+            <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="4.0" modelName="six_pos" modelPosition="head" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="4.0" x="58.0695653590446" y="33.80977836500503"></y:EdgeLabel>
             <y:BendStyle smoothed="false"/>
           </y:PolyLineEdge>
           <visone:edgeRealizerData>
@@ -565,19 +623,40 @@
         </visone:polyLineEdge>
       </data>
     </edge>
-    <edge id="e16" source="n12" target="n0">
+    <edge id="e18" source="n12" target="n0">
       <data key="d4">3</data>
-      <data key="d5">true</data>
-      <data key="d6">17</data>
-      <data key="d7">memory</data>
-      <data key="d8">17</data>
+      <data key="d5">false</data>
+      <data key="d6">19</data>
+      <data key="d7">egocentric</data>
+      <data key="d8">19</data>
       <data key="d9">
         <visone:polyLineEdge>
           <y:PolyLineEdge>
             <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-            <y:LineStyle color="#B4B4B4" type="line" width="3.0"/>
+            <y:LineStyle color="#CCCCCC" type="line" width="3.0"/>
+            <y:Arrows source="none" target="none"/>
+            <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" modelName="six_pos" modelPosition="head" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="63.0" x="-8.409981705783025" y="37.42413082062478">egocentric</y:EdgeLabel>
+            <y:BendStyle smoothed="false"/>
+          </y:PolyLineEdge>
+          <visone:edgeRealizerData>
+            <visone:line style="dashed" width="3.0"/>
+          </visone:edgeRealizerData>
+        </visone:polyLineEdge>
+      </data>
+    </edge>
+    <edge id="e19" source="n13" target="n0">
+      <data key="d4">3</data>
+      <data key="d5">true</data>
+      <data key="d6">20</data>
+      <data key="d7">memory</data>
+      <data key="d8">20</data>
+      <data key="d9">
+        <visone:polyLineEdge>
+          <y:PolyLineEdge>
+            <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+            <y:LineStyle color="#CCCCCC" type="line" width="3.0"/>
             <y:Arrows source="none" target="StandardArrow"/>
-            <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="51.0" x="-43.916759237496535" y="-53.58082509345627">memory</y:EdgeLabel>
+            <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="51.0" x="-32.82043175396507" y="77.55848527793864">memory</y:EdgeLabel>
             <y:BendStyle smoothed="false"/>
           </y:PolyLineEdge>
           <visone:edgeRealizerData>
@@ -627,8 +706,8 @@
   &amp;lt;/data&amp;gt;
 &amp;lt;/graphml&amp;gt;
 </data>
-    <data key="d12">-120, -85</data>
-    <data key="d13">0.75</data>
+    <data key="d12">-478, -461</data>
+    <data key="d13">0.5</data>
     <data key="d14">&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
 &amp;lt;graphml xmlns=&amp;quot;http://graphml.graphdrawing.org/xmlns/graphml&amp;quot; xmlns:visone=&amp;quot;http://visone.info/xmlns&amp;quot; xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot; xmlns:y=&amp;quot;http://www.yworks.com/xml/graphml&amp;quot; xsi:schemaLocation=&amp;quot;http://graphml.graphdrawing.org/xmlns/graphml http://www.yworks.com/xml/schema/graphml/1.0/ygraphml.xsd&amp;quot;&amp;gt;
   &amp;lt;key attr.name=&amp;quot;visone.nodeID&amp;quot; attr.type=&amp;quot;int&amp;quot; for=&amp;quot;node&amp;quot; id=&amp;quot;d0&amp;quot;/&amp;gt;
