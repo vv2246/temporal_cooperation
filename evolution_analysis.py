@@ -13,18 +13,21 @@ if __name__=="__main__":
     
     T = 1000 #number of timesteps
     step = 1    #to plot every step'th step 
-    p_coops = [0.5,0.5]    #probabilities to ccooperate
+    p_coops = [0.5,0.54]    #probabilities to ccooperate
     t_obs = np.linspace(0,20*np.pi,T)
-    evolve= True
+    evolve= False
     
     nsim = 1000
-    total_payoff = []
+    res = []
+    total_payoff=[]
     for niter in tqdm(range(nsim)):
         
-        phase = 2 #phase shift. If one agen'ts pahse =0, and anothers = 2, they are out-of-phase, becauuse the period is 4
+        phase = 2  #phase shift. If one agen'ts pahse =0, and anothers = 2, they are out-of-phase, becauuse the period is 4
         agents = [Agent(idx=0,p_coop= p_coops[0],T= T, modulate= True,timescale= 0.25,phase= 0,t_obs=t_obs,amplitude=0.5) ,
-                  Agent(idx =1,p_coop= p_coops[1],T= T, modulate=True,timescale = 0.25,phase =phase,t_obs=t_obs,amplitude=0.5)]#, amplitude=0.2)]
-    
+                  Agent(idx =1,p_coop= p_coops[1],T= T, modulate=True,timescale = 0.01,phase =phase,t_obs=t_obs,amplitude=0.5)]#, amplitude=0.2)]
+        # agents = [Agent(idx=0,p_coop= p_coops[0],T= T, modulate= True,timescale= 0.25,phase= 0,t_obs=t_obs) ,
+        #           Agent(idx =1,p_coop= p_coops[1],T= T, modulate=True,timescale = 0.25,phase =phase,t_obs=t_obs)]#, amplitude=0.2)]
+        
         colors = {0: "teal",  1 : "orange"} #colors associated with agent 0 and agent  1
         
         ######## 
@@ -49,8 +52,27 @@ if __name__=="__main__":
                 for a in agents:
                     a.evolution(_,1, agents)
         total_payoff.append(sum(agents[0].payoff)  + sum(agents[1].payoff))
+        
+        width=10
+        data = np.array(agents[0].history)
+        result = data[:(data.size // width) * width].reshape(-1, width).mean(axis=1)
+        data = np.array(agents[1].history)
+        result2= data[:(data.size // width) * width].reshape(-1, width).mean(axis=1)
+        
+        res.append(result+result2)
+        
+    # plt.rcParams.update({'font.size': 30})
+    # fig,ax = plt.subplots(figsize=(10,8))
+    # ax.plot(t_obs,agents[1].p_coop+agents[0].p_coop,label="$p_1^{(t)}+p_2^{(t)}$",color=colors[0])
+    # ax.plot(t_obs[::width], np.array(res).mean(0),label="mutual strategy",color=colors[1])
+    # ax.legend(loc=1)
+    # ax.set_xlabel("$t$")
+    # plt.tight_layout()
+    # plt.savefig("p_coop_resulted_coop.pdf")
+    # fig.show()
+
     # ######## 
-    # #  Plot figure 1   
+    # #  Does variability have an effect?
     # ########
     # fig,ax = plt.subplots(ncols  = 3, figsize= (47,13))
     # # agents[0].print_stats(ax[0],col=colors[0])
