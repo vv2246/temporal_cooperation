@@ -10,8 +10,8 @@ from prisoners_dilemma import *
 from scipy.integrate import odeint
 import numpy as np
 
-
-def run_2_player_game(K,p1, inphase = True):
+ 
+def run_2_player_game(K, p1, inphase = True,evolution = False):
      
     T = 400 #number of timesteps
     step = 1    #to plot every step'th step 
@@ -39,8 +39,8 @@ def run_2_player_game(K,p1, inphase = True):
     # ===============
     # PD for a pair of agents
     # ===============
-    agents = [Agent(idx=0,p_coops=sol,T= T,G = G,t_obs=t_obs) ,
-              Agent(idx =1,p_coops= sol,T= T, G = G,t_obs=t_obs)]#, amplitude=0.2)]
+    agents = [Agent(idx=0,p_coops=sol,T= T,G = G,t_obs=t_obs, K_f = 0) ,
+              Agent(idx =1,p_coops= sol,T= T, G = G,t_obs=t_obs, K_f = 0)]#, amplitude=0.2)]
     
     
     ######## 
@@ -50,6 +50,7 @@ def run_2_player_game(K,p1, inphase = True):
         action1, action2 = agents[0].decision(_),agents[1].decision(_) 
         for a in agents:
             a.calc_payoff( agents)
+        break
     return agents
 
 

@@ -38,7 +38,7 @@ class Agent():
         - amplitude
     payoff_mat - payoff matrix
     """
-    def __init__(self, idx, p_coops, T,t_obs ,G):
+    def __init__(self, idx, p_coops, T,t_obs ,G, K_f):
         self.history = []
         self.payoff = []
         self.T = T
@@ -50,6 +50,8 @@ class Agent():
         self.nbrs_idx = list(G.neighbors(self.idx))
         self.nnbrs = len(self.nbrs_idx)
         self.N = G.number_of_nodes()
+        self.p0 = np.ones(len(t_obs)) * self.p_coop[0]
+        self.K_f = K_f
         
     def decision(self , t):
         '''
@@ -65,12 +67,8 @@ class Agent():
         self.history.append(res_all)
         return res
     
-    def update(self, tstart, tfinish):
-        
-        self.p_coop[tstart: tfinish] = self.p_coop_const 
-        if self.modulate:
-            self.p_coop[tstart: tfinish]+= self.amplitude*np.sin(self.period*(self.t_obs[tstart: tfinish] +self.phase ))
-        self.p_coop = np.clip(self.p_coop,0,1)
+    def update(self,new_p_coops, tstart):
+        self.p_coop[tstart: ] = new_p_coops[:,self.idx]
 
 
 
@@ -79,25 +77,22 @@ class Agent():
         Evolution. At each tau step, copy the winning agent's strategy 
         with some probability
         '''
-        if t % tau != 0:
-            print("no update this time")
-        else:
-            nbrs = {i:agents[i].payoff[-1] for i in range(len(agents))}
-            a = max(nbrs, key=nbrs.get)
-            if  agents[a].payoff[-1]>  self.payoff[-1]:
-                p_a = agents[a].p_coop[t]
-                r = np.random.rand()
-                p_up = (1+np.exp((self.p_coop_const - p_a))/self.K)**(-1)
-                ### 1 means cooperating
-                # print(p_up)
-                if p_up >= r:
-                    if self.p_coop_const == p_a:
-                        # print("would update, but probabilities are equivalent")
-                        pass
-                    else:
-                        # print("update from ", round(self.p_coop_const,2) ," as other agent got payoff of " , agents[a].payoff[-1], " whereas this one got " , self.payoff[-1],end=". ")
-                        self.p_coop_const = p_a
-                        self.update(t,self.T)
+        # if t % tau != 0:
+        #     print("no update this time")
+        # else:
+        nbrs = {i:agents[i].payoff[-1] for i in self.nbrs_idx}
+        # print(nbrs)
+        a = max(nbrs, key=nbrs.get)
+        if  agents[a].payoff[-1]>  self.payoff[-1]:
+            p_a = agents[a].p_coop[t]
+            r = np.random.rand()
+            p_up = (1+np.exp((self.p_coop[t] - p_a))/self.K_f)**(-1)
+            if p_up >= r:
+                print(f"at {t} update from ", round(self.p_coop[t],2) ,"to" ,p_a, " as other agent got payoff of " , agents[a].payoff[-1], " whereas this one got " , self.payoff[-1],end="\n ")
+                # self.p_coop_const = p_a
+                self.p_coop[t] = p_a
+                # print(self.p0, t)
+                # print(self.p0, t)
     
     def calc_payoff(self , agents ):
         '''
@@ -105,6 +100,7 @@ class Agent():
         based on the decisions of neighbours of a node in the graph 
         if iit is a 2-player game, there is one edge and each node is another's neighbour
         '''
+        debug =0
         current_pay = 0
         for nbr in self.nbrs_idx:
             agent = agents[nbr]
@@ -115,8 +111,10 @@ class Agent():
             if d2 == 1: idx2 = 0 
             else : idx2 = 1
             pay = self.payoff_mat[idx1,idx2]
+            if debug:
+                print("node:", self.idx, "self:" ,d1, " nbr: ", d2, "pay to self: ", pay)
             current_pay += pay
-        self.payoff.append(current_pay)
+        self.payoff.append(current_pay/self.nnbrs)
         self.cumm_payoff.append(current_pay + sum(self.payoff))
             
     def print_stats(self, ax = None,plot=False,col= "blue"):
@@ -133,49 +131,152 @@ def calc_mutual_coop(G, agents, t):
     return n_coop_games
         
         
+        
+def test():
+    edges = [(0,1),(1,2)]
+    G = nx.Graph()
+    G.add_edges_from(edges)
+    T = 100
+    step =1 
+    N = G.number_of_nodes()
+    t_obs = np.linspace(0,80*np.pi,T)
+    p0 = np.array([0,0.5,1])
+    A = np.array(nx.adjacency_matrix(G).todense())
+    timescale = 1
+    K = 0.01
+    B= 1# - K*20
+    amplitude = 0.1
+    phase= np.zeros(N)
+    sol  = get_p_coop(p0,timescale= timescale ,phase = phase ,amplitude = amplitude,t_obs= t_obs,A=    A, K = K, B = B)
+    # plt.plot(sol)
+    agents = [Agent(idx=i,p_coops=sol,T= T,G = G,t_obs=t_obs, K_f=0.1)   for i in range(N)]
+    for i in range(N):
+        plt.plot(agents[i].p_coop)
+    coop_game_array = []
+    tau = 50
+    # print("test to check payoffs are OK")
+    for _ in range(1,T,step):
+        for i in range(N):
+            agents[i].decision(_)
+            # print( agents[i].p_coop[_],end=",")
+        # print("\n")
+        for i in range(N):
+            agents[i].calc_payoff(agents) 
+        if _ % tau == 0:
+            for i in range(N):
+                agents[i].evolution(_, 2, agents)
+            pt = np.array([agents[i].p_coop[_] for i in range(N)])
+            new_p_coops = get_p_coop(pt, timescale, phase, amplitude, t_obs[_:], A, K, B)
+            
+            for i in range(N):
+                agents[i].update(new_p_coops ,_)
+    for i in range(N):
+        plt.plot(agents[i].p_coop)
+            
+        # break
+    
+        # coop_game_array.append(calc_mutual_coop(G, agents, _))
+    # print( np.mean(coop_game_array[:2000]), np.mean(coop_game_array[2000:]))
+   
+    
+
+
+ 
+def run_n_player_game(K, p1, inphase = True,evolution = False):
+     
+    T = 400 #number of timesteps
+    step = 1    #to plot every step'th step 
+    t_obs = np.linspace(0,80*np.pi,T)
+    N=10
+    p0 = np.random.rand(N)
+    G = nx.erdos_renyi_graph(N,0.5)
+        
+    A = np.array(nx.adjacency_matrix(G).todense())
+    timescale = 1
+    K = 0.004
+    B= 1# - K*20
+    if inphase:
+        phase= np.zeros(N)
+    else:
+        phase= np.random.rand(N)*np.pi*2
+    sol  = get_p_coop(p0,timescale,phase,amplitude = 0.5,t_obs= t_obs,A=    A, K = K, B = B)
+                
+    agents = [Agent(idx=i,p_coops=sol,T= T,G = G,t_obs=t_obs, K_f=0.1)   for i in range(N)]
+    ######## 
+    #  Game   
+    ########
+    for _ in range(0,T,step):
+        for a in agents:
+            a.decision(_)
+        for a in agents:
+            a.calc_payoff( agents)
+        break
+    return agents
+
+        
 plt.rcParams.update({'font.size': 30})
 
 if __name__ =="__main__":
+    
+    # test()
+    
     T = 400 #number of timesteps
     step = 1    #to plot every step'th step 
     t_obs = np.linspace(0,80*np.pi,T)
     N=10
     p0 = np.random.rand(N)
         
-    G = nx.erdos_renyi_graph(N,1)
-    # G.add_nodes_from(range(N))
-    # for (i,j) in edges:
-        # G.add_edge(i,j)
+    G = nx.erdos_renyi_graph(N,0.5)
     A = np.array(nx.adjacency_matrix(G).todense())
-    L = -A + np.diag(A.sum(0)) 
     timescale = 1
     K = 0.001
-    for K in np.linspace(0,0.1,10):
-        res = []
-        for niter in range(100):
-            B= 1# - K*20
+    B = 1
+    phase= np.zeros(N)
+    amplitude = 0.1
+    sol  = get_p_coop(p0,timescale= timescale ,phase = phase ,amplitude = amplitude,t_obs= t_obs,A=    A, K = K, B = B)
+    agents = [Agent(idx=i,p_coops=sol,T= T,G = G,t_obs=t_obs, K_f=0.1)   for i in range(N)]
+    
+    tau = 500
+    for _ in range(1,T,step):
+        for i in range(N):
+            agents[i].decision(_)
+        for i in range(N):
+            agents[i].calc_payoff(agents) 
+        if _ % tau == 0:
+            for i in range(N):
+                agents[i].evolution(_, 2, agents)
+            pt = np.array([agents[i].p_coop[_] for i in range(N)])
+            new_p_coops = get_p_coop(pt, timescale, phase, amplitude, t_obs[_:], A, K, B)
             
-            phase= np.random.rand(N)*2*np.pi
-            sol  = get_p_coop(p0,timescale= np.random.rand(N) ,phase = phase ,amplitude = np.random.rand(N)*0.1,t_obs= t_obs,A=    A, K = K, B = B)
+            for i in range(N):
+                agents[i].update(new_p_coops ,_)
+    
+    # for K in np.linspace(0,0.1,10):
+    #     res = []
+    #     for niter in range(100):
+    #         B= 1# - K*20
+            
+    #         phase= np.random.rand(N)*2*np.pi
+    #         sol  = get_p_coop(p0,timescale= np.random.rand(N) ,phase = phase ,amplitude = np.random.rand(N)*0.1,t_obs= t_obs,A=    A, K = K, B = B)
                         
-            # ===============
-            # PD for N agents
-            # ===============
-            agents = [Agent(idx=i,p_coops=sol,T= T,G = G,t_obs=t_obs)   for i in range(N)]
+    #         # ===============
+    #         # PD for N agents
+    #         # ===============
+    #         agents = [Agent(idx=i,p_coops=sol,T= T,G = G,t_obs=t_obs)   for i in range(N)]
             
             
-            ######## 
-            #  Game   
-            ########
-            coop_game_array = []
-            for _ in range(0,T,step):
-                for i in range(N):
-                    agents[i].decision(_)
-                for i in range(N):
-                    agents[i].calc_payoff(agents) 
-                coop_game_array.append(calc_mutual_coop(G, agents, _))
-            res .append( np.mean(coop_game_array[50:]))
-        plt.scatter(K, np.mean(res), color = "black")
+    #         ######## 
+    #         #  Game   
+    #         ########
+    #         coop_game_array = []
+    #         for _ in range(0,T,step):
+    #             for i in range(N):
+    #                 agents[i].decision(_)
+    #             for i in range(N):
+    #                 agents[i].calc_payoff(agents) 
+    #             coop_game_array.append(calc_mutual_coop(G, agents, _))
+    #         res .append( np.mean(coop_game_array[50:]))
+    #     plt.scatter(K, np.mean(res), color = "black")
     
     
     # ######## 
