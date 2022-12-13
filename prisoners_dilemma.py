@@ -15,14 +15,15 @@ import networkx as nx
 from scipy.integrate import odeint
 
 
-def derivative( x, t,  L, amplitude = 0.1 , timescale = 1, phase = np.array([0,np.pi]), K = 0.01, B= 0.2):
+def derivative( x, t,  L, amplitude  , timescale , phase , K):#, B= 0.2):
     period = np.pi* 2 * timescale  
-    dpdt =  - K * np.matmul(L, x) + B  * (amplitude/ period)* np.cos(t/period + phase )
+    dpdt =  - K * np.matmul(L, x) + (amplitude/period)* np.cos(t/period + phase ) 
     return dpdt
 
-def get_p_coop(p_coop,timescale, phase,amplitude, t_obs, A, K, B):
+def get_p_coop(p_coop,timescale, phase,amplitude, t_obs, A, K):#, B):
     L = -A + np.diag(A.sum(0)) 
-    sol  = odeint(derivative, p_coop, t_obs, args = (L, amplitude, timescale, phase, K, B))
+    # print(phase)
+    sol  = odeint(derivative, p_coop, t_obs, args = (L, amplitude, timescale, phase, K))#, B))
     sol = np.clip(sol,0,1)
     return sol
     
@@ -182,36 +183,46 @@ def test():
 
 
  
-def run_n_player_game(K, p1, inphase = True,evolution = False):
+def run_n_player_game(K, p0 , inphase = True,evolution = False,amplitude = 0.1, T= 400, tau = 10, gdensity=1, simulate= True):
      
-    T = 400 #number of timesteps
     step = 1    #to plot every step'th step 
     t_obs = np.linspace(0,80*np.pi,T)
-    N=10
-    p0 = np.random.rand(N)
-    G = nx.erdos_renyi_graph(N,0.5)
-        
+    N=p0.shape[0]
+    G = nx.erdos_renyi_graph(N,gdensity)
     A = np.array(nx.adjacency_matrix(G).todense())
     timescale = 1
-    K = 0.004
-    B= 1# - K*20
-    if inphase:
-        phase= np.zeros(N)
-    else:
+    if N!= 2:
         phase= np.random.rand(N)*np.pi*2
-    sol  = get_p_coop(p0,timescale,phase,amplitude = 0.5,t_obs= t_obs,A=    A, K = K, B = B)
-                
-    agents = [Agent(idx=i,p_coops=sol,T= T,G = G,t_obs=t_obs, K_f=0.1)   for i in range(N)]
-    ######## 
-    #  Game   
-    ########
-    for _ in range(0,T,step):
-        for a in agents:
-            a.decision(_)
-        for a in agents:
-            a.calc_payoff( agents)
-        break
-    return agents
+    else:
+        if inphase:
+            phase= np.zeros(N)
+        else:
+            phase = np.array([0,np.pi/timescale])
+    sol  = get_p_coop(p0,timescale,phase,amplitude = amplitude,t_obs= t_obs,A=    A, K = K)#, B = B)
+    # plt.plot(sol)
+    # plt.show()
+    if simulate:
+        agents = [Agent(idx=i,p_coops=sol,T= T,G = G,t_obs=t_obs, K_f=0.1)   for i in range(N)]
+        ######## 
+        #  Game   
+        ########
+        for _ in range(0,T,step):
+            for a in agents:
+                a.decision(_)
+            for a in agents:
+                a.calc_payoff( agents)
+            if evolution:
+                if _ % tau == 0:
+                    for i in range(N):
+                        agents[i].evolution(_, 2, agents)
+                pt = np.array([agents[i].p_coop[_] for i in range(N)])
+                new_p_coops = get_p_coop(pt, timescale, phase, amplitude, t_obs[_:], A, K)
+                        
+                for i in range(N):
+                    agents[i].update(new_p_coops ,_)
+        return agents
+    else:
+        return sol
 
         
 plt.rcParams.update({'font.size': 30})
@@ -219,37 +230,39 @@ plt.rcParams.update({'font.size': 30})
 if __name__ =="__main__":
     
     # test()
+    agents= run_n_player_game(K=0.0, p0 = np.array([0,1]), inphase = True,evolution = True,amplitude=0.1, T =400, tau=10,gdensity = 1)
     
-    T = 400 #number of timesteps
-    step = 1    #to plot every step'th step 
-    t_obs = np.linspace(0,80*np.pi,T)
-    N=10
-    p0 = np.random.rand(N)
+    # pass
+    # T = 400 #number of timesteps
+    # step = 1    #to plot every step'th step 
+    # t_obs = np.linspace(0,80*np.pi,T)
+    # N=10
+    # p0 = np.random.rand(N)
         
-    G = nx.erdos_renyi_graph(N,0.5)
-    A = np.array(nx.adjacency_matrix(G).todense())
-    timescale = 1
-    K = 0.001
-    B = 1
-    phase= np.zeros(N)
-    amplitude = 0.1
-    sol  = get_p_coop(p0,timescale= timescale ,phase = phase ,amplitude = amplitude,t_obs= t_obs,A=    A, K = K, B = B)
-    agents = [Agent(idx=i,p_coops=sol,T= T,G = G,t_obs=t_obs, K_f=0.1)   for i in range(N)]
+    # G = nx.erdos_renyi_graph(N,0.5)
+    # A = np.array(nx.adjacency_matrix(G).todense())
+    # timescale = 1
+    # K = 0.001
+    # B = 1
+    # phase= np.zeros(N)
+    # amplitude = 0.1
+    # sol  = get_p_coop(p0,timescale= timescale ,phase = phase ,amplitude = amplitude,t_obs= t_obs,A=    A, K = K, B = B)
+    # agents = [Agent(idx=i,p_coops=sol,T= T,G = G,t_obs=t_obs, K_f=0.1)   for i in range(N)]
     
-    tau = 500
-    for _ in range(1,T,step):
-        for i in range(N):
-            agents[i].decision(_)
-        for i in range(N):
-            agents[i].calc_payoff(agents) 
-        if _ % tau == 0:
-            for i in range(N):
-                agents[i].evolution(_, 2, agents)
-            pt = np.array([agents[i].p_coop[_] for i in range(N)])
-            new_p_coops = get_p_coop(pt, timescale, phase, amplitude, t_obs[_:], A, K, B)
+    # tau = 500
+    # for _ in range(1,T,step):
+    #     for i in range(N):
+    #         agents[i].decision(_)
+    #     for i in range(N):
+    #         agents[i].calc_payoff(agents) 
+    #     if _ % tau == 0:
+    #         for i in range(N):
+    #             agents[i].evolution(_, 2, agents)
+    #         pt = np.array([agents[i].p_coop[_] for i in range(N)])
+    #         new_p_coops = get_p_coop(pt, timescale, phase, amplitude, t_obs[_:], A, K, B)
             
-            for i in range(N):
-                agents[i].update(new_p_coops ,_)
+    #         for i in range(N):
+    #             agents[i].update(new_p_coops ,_)
     
     # for K in np.linspace(0,0.1,10):
     #     res = []
