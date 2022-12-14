@@ -12,6 +12,7 @@ Prisoner's dilemma
 import numpy as np
 import matplotlib.pyplot as plt
 import networkx as nx
+import random
 from scipy.integrate import odeint
 
 
@@ -82,19 +83,16 @@ class Agent():
         #     print("no update this time")
         # else:
         nbrs = {i:agents[i].payoff[-1] for i in self.nbrs_idx}
-        # print(nbrs)
-        a = max(nbrs, key=nbrs.get)
-        if  agents[a].payoff[-1]>  self.payoff[-1]:
-            p_a = agents[a].p_coop[t]
-            r = np.random.rand()
-            p_up = (1+np.exp((self.p_coop[t] - p_a))/self.K_f)**(-1)
-            if p_up >= r:
-                print(f"at {t} update from ", round(self.p_coop[t],2) ,"to" ,p_a, " as other agent got payoff of " , agents[a].payoff[-1], " whereas this one got " , self.payoff[-1],end="\n ")
-                # self.p_coop_const = p_a
-                self.p_coop[t] = p_a
-                # print(self.p0, t)
-                # print(self.p0, t)
-    
+        a = random.choice(list(nbrs.keys()))#max(nbrs, key=nbrs.get)
+        # if  agents[a].payoff[-1]>  self.payoff[-1]:
+        p_a = agents[a].p_coop[t]
+        r = np.random.rand()
+        p_up = (1+np.exp((self.p_coop[t] - p_a))/self.K_f)**(-1)
+        if p_up >= r:
+            # print(f"at {t} update from ", round(self.p_coop[t],2) ,"to" ,p_a, " as other agent got payoff of " , agents[a].payoff[-1], " whereas this one got " , self.payoff[-1],end="\n ")
+            
+            self.p_coop[t] = p_a
+            
     def calc_payoff(self , agents ):
         '''
         Calculates payoff at a previous timestep
@@ -183,46 +181,60 @@ def test():
 
 
  
-def run_n_player_game(K, p0 , inphase = True,evolution = False,amplitude = 0.1, T= 400, tau = 10, gdensity=1, simulate= True):
+def run_n_player_game(K, p0, inphase = True, evolution = False, 
+                      amplitude = 0.1, T= 400, tau = 10, gdensity=1, 
+                      T_mult=80, K_f= 0.1, graph_type= "ER",return_graph =False):
      
     step = 1    #to plot every step'th step 
-    t_obs = np.linspace(0,80*np.pi,T)
+    t_obs = np.linspace(0,T_mult*np.pi,T)
     N=p0.shape[0]
-    G = nx.erdos_renyi_graph(N,gdensity)
+    connected = False
+    if graph_type == "ER":
+        while connected == False:
+            G = nx.erdos_renyi_graph(N,gdensity)
+            connected = nx.is_connected(G)
+    elif graph_type =="BA":
+        G = nx.barabasi_albert_graph(N, 3)
+    elif graph_type == "lattice":
+        G = nx.convert_node_labels_to_integers(nx.grid_graph(dim=(4, 5, 5)))
+        
+    # elif graph_type == ""
     A = np.array(nx.adjacency_matrix(G).todense())
     timescale = 1
-    if N!= 2:
-        phase= np.random.rand(N)*np.pi*2
+    if inphase:
+        phase= np.zeros(N)
     else:
-        if inphase:
-            phase= np.zeros(N)
-        else:
+        if N==2:
             phase = np.array([0,np.pi/timescale])
-    sol  = get_p_coop(p0,timescale,phase,amplitude = amplitude,t_obs= t_obs,A=    A, K = K)#, B = B)
+        else:
+            phase= np.random.rand(N)*np.pi/timescale
+    sol  = get_p_coop(p0,timescale,phase, amplitude = amplitude, t_obs= t_obs, A= A, K = K)
     # plt.plot(sol)
     # plt.show()
-    if simulate:
-        agents = [Agent(idx=i,p_coops=sol,T= T,G = G,t_obs=t_obs, K_f=0.1)   for i in range(N)]
-        ######## 
-        #  Game   
-        ########
-        for _ in range(0,T,step):
-            for a in agents:
-                a.decision(_)
-            for a in agents:
-                a.calc_payoff( agents)
-            if evolution:
-                if _ % tau == 0:
-                    for i in range(N):
-                        agents[i].evolution(_, 2, agents)
-                pt = np.array([agents[i].p_coop[_] for i in range(N)])
-                new_p_coops = get_p_coop(pt, timescale, phase, amplitude, t_obs[_:], A, K)
-                        
+    # if simulate:
+    agents = [Agent(idx=i,p_coops=sol,T= T,G = G,t_obs=t_obs, K_f=K_f)   for i in range(N)]
+    ######## 
+    #  Game   
+    ########
+    for _ in range(0,T,step):
+        for a in agents:
+            a.decision(_)
+        for a in agents:
+            a.calc_payoff( agents)
+        if evolution:
+            if _ % tau == 0:
                 for i in range(N):
-                    agents[i].update(new_p_coops ,_)
+                    # print("bla")
+                    agents[i].evolution(_, 2, agents)
+            pt = np.array([agents[i].p_coop[_] for i in range(N)])
+            new_p_coops = get_p_coop(pt, timescale, phase, amplitude, t_obs[_:], A, K)
+                    
+            for i in range(N):
+                agents[i].update(new_p_coops ,_)
+    if return_graph == False:
         return agents
     else:
-        return sol
+        return agents, G
 
         
 plt.rcParams.update({'font.size': 30})
@@ -230,9 +242,55 @@ plt.rcParams.update({'font.size': 30})
 if __name__ =="__main__":
     
     # test()
-    agents= run_n_player_game(K=0.0, p0 = np.array([0,1]), inphase = True,evolution = True,amplitude=0.1, T =400, tau=10,gdensity = 1)
+    Klist = np.linspace(0,0.04,5)
+    graph_type = "ER"
+    fig,ax = plt.subplots(figsize= (10,8))
+    col = {"ER": "deepskyblue", "BA": "tomato", "lattice": "limegreen" }
+    shape = {"ER": "^", "BA": "o", "lattice": "*" }
     
-    # pass
+    for graph_type in ["ER", "BA", "lattice"]:
+        N = 100
+        res_K = []
+        res_K_std = []
+        evolution = False
+        for K in Klist:
+            res = []
+            print(K)
+            for niter in range(10):
+                print(niter,end=",")
+                # if K_random:
+                
+                #    agents, G= run_n_player_game(K=K * np.random.rand(N), p0 = np.linspace(0,1,1000), inphase = True,evolution = evolution,
+                #                           amplitude=0.0, T =200,T_mult = 40, tau=10,gdensity = 6/1000, return_graph= True, graph_type=graph_type)
+                # else:
+                    
+                agents, G= run_n_player_game(K=K , p0 = np.linspace(0,1,N), inphase = True,evolution = evolution,
+                                          amplitude=0.1, T =200,T_mult = 40, tau=1,gdensity = 6/N, return_graph= True, graph_type=graph_type)
+               
+               
+                f_C= 0
+                for ti in range(100,200):
+                    f_C += calc_mutual_coop(G, agents, ti)#sum([np.nansum(agents[i].history[ti]) for i in range(N)])sum([np.nansum(agents[i].history[ti]) for i in range(N)]) #calc_mutual_coop(G, agents, ti)#sum([np.nansum(agents[i].history[ti]) for i in range(N)]) #
+                res.append(f_C/G.number_of_edges()/100/2)
+         
+            # for i in range(N):
+            #     plt.plot(agents[i].p_coop)
+            # plt.show()
+            res_K.append(np.mean(res))
+            res_K_std.append(np.std(res))
+        # pass
+        # import pandas as pd
+        # df = pd.DataFrame([Klist, res_K,res_K_std]).T
+        # df.columns = ["K","Mean","Error"]
+        # df.to_csv(f"K_random_{K_random}_vs_f_C_graph_{graph_type}_evo_{evolution}.csv")
+    
+        ax.errorbar(Klist, res_K, yerr= res_K_std, fmt= shape[graph_type],capsize = 5,label= graph_type, color = col[graph_type],ms=20)
+    ax.legend(loc=4)
+    ax.set_ylabel("$f_C$")
+    ax.set_xlabel("$K$")
+    ax.set_ylim(0.0,.2)
+    plt.tight_layout()
+    plt.savefig("network_f_C_vs_K_no_phase.pdf")
     # T = 400 #number of timesteps
     # step = 1    #to plot every step'th step 
     # t_obs = np.linspace(0,80*np.pi,T)

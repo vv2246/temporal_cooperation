@@ -304,22 +304,24 @@ if __name__ =="__main__":
         # K = np.array([0.1,0.1])
         K0 = np.array([0.,0.])
         p0 = np.array([0,1])
+        K_f=1
         for Kval in range(0,11,1):
             Kval = Kval/100
+            print(Kval)
             K = np.array([Kval,Kval])
             for tau in range(1,11,1):
                 fc = 0
                 for niter in range(100):
                     
-                    agents= run_n_player_game(K=K, p0 = p0, inphase = True,evolution = True,amplitude=0.2, T =400, tau=10,gdensity = 1)
-                    h1, h2 = np.array(agents[0].history)[:-100,1], np.array(agents[1].history)[:-100,0]
+                    agents= run_n_player_game(K=K, p0 = p0, inphase = True,evolution = True,amplitude=0.2, T =100, tau=tau,gdensity = 1,T_mult=30,K_f=K_f)
+                    h1, h2 = np.array(agents[0].history)[:-50,1], np.array(agents[1].history)[:-50,0]
                     fc +=sum(h1*h2)/len(h1)
                 fc = fc/100 
                 
                 fc1 = 0
                 for niter in range(100):
-                    agents= run_n_player_game(K=K0, p0 = p0, inphase = True,evolution = True,amplitude=0.2, T =400, tau=10,gdensity = 1)
-                    h1, h2 = np.array(agents[0].history)[:-100,1], np.array(agents[1].history)[:-100,0]
+                    agents= run_n_player_game(K=K0, p0 = p0, inphase = True,evolution = True,amplitude=0.2, T =100, tau=tau,gdensity = 1,T_mult=30,K_f=K_f)
+                    h1, h2 = np.array(agents[0].history)[:-50,1], np.array(agents[1].history)[:-50,0]
                     fc1 +=sum(h1*h2)/len(h1)
                 fc1 = fc1/100
                 res.append((Kval, tau, fc,fc1))
@@ -327,26 +329,31 @@ if __name__ =="__main__":
                     
         import pandas as pd
         import seaborn as sns
+        import matplotlib.colors as colors
     # 
         fig,ax = plt.subplots(figsize=(12,10))
         # plt.rcParams.update({'font.size': 30})
         df = pd.DataFrame(res, columns = ["K","tau","fc","fc0"])
         df["res"] = df.fc/df.fc0
+        # K_f = 0.1
+        # df = pd.read_csv(f"2_player_p_vs_K_tau_Kf_{K_f}.csv")
         table = df.pivot("K","tau","res")
-        yticks = np.linspace(df.K.min(),df.K.max(),8)
-        ax = sns.heatmap(table,vmin=0, vmax=4.3)#,cmap='BrBG')#,yticklabels=list(yticks))
+        divnorm = colors.TwoSlopeNorm(vmin=0.75, vcenter=1, vmax=2.5)
+        
+        ax = sns.heatmap(table,norm =divnorm,cmap='BrBG')#norm=divnorm
         # ax.set_yticks(yticks)
         ax.invert_yaxis()
         ax.set_title("$f_C(K)/f_C(K=0)$")
         ax.set_xlabel("$\\tau$")
         ax.set_yticks(np.array(range(len(list(set(df.K)))))+0.5)
-        ax.set_yticklabels(np.array(range(0,11,1))/10,rotation=0)
+        ax.set_yticklabels(np.array(range(0,11,1))/100,rotation=0)
         ax.set_xticks(np.array(range(len(list(set(df.tau)))))+0.5)
         ax.set_xticklabels(np.array(list(set(df.tau))),rotation=0)
         plt.tight_layout()
-        plt.savefig("2_player_p_vs_K_tau.pdf")
+        plt.savefig(f"2_player_p_vs_K_tau_Kf_{K_f}.pdf")
+        df.to_csv(f"2_player_p_vs_K_tau_Kf_{K_f}.csv")
         
-        # plt.tight_layout()
+        plt.show()
     ######## 
     #  Plot figure 2c
     ########
